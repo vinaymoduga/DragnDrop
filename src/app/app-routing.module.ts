@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { CompletedTasksComponent } from '../CompletedTasks/completedTasks.component';
-import { DeletedTasksComponent } from '.././deletedTasks/deletedTasks.component';
+import { DeletedTasksComponent } from '.././DeletedTasks/deletedTasks.component';
 import { TasksComponent } from '.././Tasks/tasks.component';
 import { PageNotFoundComponent } from '.././PageNotFound/pageNotFound.component';
 

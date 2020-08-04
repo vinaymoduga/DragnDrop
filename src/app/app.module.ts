@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { CompletedTasksComponent } from '../CompletedTasks/completedTasks.component';
-import { DeletedTasksComponent } from '.././deletedTasks/deletedTasks.component';
+import { DeletedTasksComponent } from '.././DeletedTasks/deletedTasks.component';
 import { TasksComponent } from '.././Tasks/tasks.component';
 import { PageNotFoundComponent } from '.././PageNotFound/pageNotFound.component';
 
