@@ -1,0 +1,19 @@
+<div *ngIf="deletedTaskList.length > 0" style="margin-left: 25%;margin-top: 30px;">
+    <ng-container *ngFor="let taskItem of deletedTaskList">
+        <div class="example-box" cdkDrag style="width: 50%;">
+            <span>
+                    <div style="margin-left:30px;float:left;"> {{taskItem.taskName}} </div>
+                <div style="margin-left: 200px;"> <i style="cursor: pointer" title="Reassign Deleted Task"
+                        (click)="reassignDeleted(taskItem.sectionId , taskItem.taskId)" class="fa fa-circle-o-notch"
+                        aria-hidden="true"></i>
+                </div>
+            </span>
+        </div>
+    </ng-container>
+
+</div>
+
+<div *ngIf="deletedTaskList.length === 0" style="margin-left: 350px; margin-top: 150px; width: 30%;color:burlywood;">
+
+    <h3> <strong> NO DELETED TASKS... </strong></h3>
+</div>

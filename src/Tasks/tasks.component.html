@@ -1,0 +1,72 @@
+<div style="margin-top: 40px;">
+
+</div>
+
+
+<div cdkDropListGroup>
+    <div class="example-container">
+
+        <div style="margin-left: 0px;margin-right: 0px;margin-top:20px;"
+            *ngFor=" let sectionItem of _commonService.sectionList">
+
+            <div class="row" *ngIf="!sectionItem.isDeleted">
+                <div class="col-md-1 offset-md-2" style="padding-top: 5px;cursor:pointer">
+                    <i (click)="expandSection(sectionItem.sectionId)" *ngIf="!sectionItem.isCollapsed"
+                        class="fa fa-caret-up" aria-hidden="true"></i>
+                    <i (click)="expandSection(sectionItem.sectionId)" *ngIf="sectionItem.isCollapsed"
+                        class="fa fa-caret-down" aria-hidden="true"></i>
+                </div>
+                <div class="col-md-8">
+                    <span style="padding-top: 3px;">
+                        <h3 style="padding-left: 30px;float: left;"> {{sectionItem.sectionName}} </h3>
+                        <i (click)="deleteSection(sectionItem.sectionId)" style="margin-left:150px;padding-top: 10px;" class="fa fa-trash"
+                         title="Delete Section"   aria-hidden="true"></i>
+                    </span>
+                </div>
+
+            </div>
+
+            <div *ngIf="!sectionItem.isCollapsed">
+
+                <div cdkDropList [cdkDropListData]="sectionItem.tasks"
+                    [ngClass]="{'example-list' : sectionItem.tasks.length >0}" style="margin-left:300px;border:none;"
+                    (cdkDropListDropped)="drop($event , sectionItem.sectionId)">
+
+                    <ng-container *ngFor="let taskItem of sectionItem.tasks">
+                        <div class="example-box" cdkDrag *ngIf="!taskItem.isCompleted  && !taskItem.isDeleted"
+                            style="height: 5px;">
+                            <span>
+                                <span style="margin-left:30px;"> <input type="radio" value="false"> </span>
+                                <span style="margin-left:30px;"> {{taskItem.taskName}} </span>
+                                <span style="margin-left: 200px;"> <i style="cursor: pointer" title="Complete Task"
+                                        (click)="taskCompleted(sectionItem.sectionId , taskItem.taskId)"
+                                        class="fa fa-th-list" aria-hidden="true"></i>
+                                </span>
+                                <span> <i style="cursor: pointer;margin-left:30px;" title="Delete Task"
+                                        (click)="taskDeleted(sectionItem.sectionId, taskItem.taskId)"
+                                        class="fa fa-trash" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                        </div>
+                    </ng-container>
+                </div>
+
+                <div class="row" style="height: 50px;width:58%;margin-left: 300px;padding-top:8px;
+                border-bottom:1px solid black;border-radius: 3px;margin-top: 1px;">
+
+                    <div class="col-md-6 offset-md-1">
+                        <input type="text" class="form-control" [(ngModel)]="sectionItem.newTaskName"
+                            style="border:none;" placeholder="Add Task...">
+                    </div>
+                    <div class="col-md-1" style="cursor: pointer;">
+                        <i (click)="addNewTaskItem(sectionItem.sectionId , sectionItem.newTaskName)" class="fa fa-plus"
+                            aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-1" style="cursor: pointer;">
+                        <i (click)="clearTaskItem(sectionItem.sectionId)" class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

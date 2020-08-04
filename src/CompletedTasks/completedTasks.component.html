@@ -1,0 +1,22 @@
+<div *ngIf="completedTaskList.length > 0" style="margin-left: 280px; margin-top: 30px; width: 30%;">
+
+    <ng-container *ngFor="let taskItem of completedTaskList">
+        <div class="example-box" cdkDrag style="width: 50%;">
+            <span>
+
+                <div style="float: left;"> <i class="fa fa-check-circle" aria-hidden="true"></i>
+                </div>
+                <div style="margin-left:30px;float: left;"> {{taskItem.taskName}} </div>
+                <div style="margin-left: 200px;"> <i style="cursor: pointer" title="Reassign  Completed Task"
+                        (click)="reasssignCompleted(taskItem.sectionId , taskItem.taskId)" class="fa fa-circle-o-notch"
+                        aria-hidden="true"></i>
+                </div>
+            </span>
+        </div>
+    </ng-container>
+
+</div>
+<div *ngIf="completedTaskList.length === 0" style="margin-left: 350px; margin-top: 150px; width: 30%;color:burlywood;">
+
+    <h3> <strong> NO COMPLETED TASKS... </strong> </h3>
+</div>
